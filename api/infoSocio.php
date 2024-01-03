@@ -1,25 +1,47 @@
 <?php
-// Incluir tu archivo de configuración
-require_once '../conn/conexion.php';
-// Configurar encabezados para permitir solicitudes desde cualquier origen (CORS)
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-
-try {
-    // Crear instancia de PDO usando tu configuración
-    $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $dbUser, $dbPass, $options);
-
-    // Realizar la consulta
-    $sql = "SELECT ID_Socio, Nombre, Apellido, CorreoElectronico, NumeroTelefono, Direccion, FechaInsercion, FechaActualizacion, ID_Colegio FROM fnc.socios";
-    $result = $pdo->query($sql);
-
-    // Obtener los resultados como un array asociativo
-    $data = $result->fetchAll(PDO::FETCH_ASSOC);
-
-    // Devolver la respuesta como JSON
-    echo json_encode($data);
-} catch (PDOException $e) {
-    // Manejar errores de conexión o consulta
-    echo json_encode(array('error' => 'Error de conexión a la base de datos.'));
-}
+require_once '../conn/conexion.php'; // Reemplaza 'ruta/a/' con la ubicación real de tu archivo
 ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Tus encabezados aquí -->
+</head>
+<body>
+    <!-- Tu código HTML aquí -->
+
+    <!-- Full Screen Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <!-- ... (resto de tu código) ... -->
+    </div>
+    <!-- Full Screen Search End -->
+
+    <!-- Otros elementos HTML y scripts aquí -->
+
+    <!-- Script de búsqueda -->
+    <script>
+        function buscarSocio() {
+            var cedula = document.getElementById("cedulaInput").value;
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var resultado = JSON.parse(this.responseText);
+
+                    document.getElementById("Nombre").value = resultado.Nombre;
+                    document.getElementById("Cedula").value = resultado.Cedula;
+                    document.getElementById("Apellido").value = resultado.Apellido;
+                    document.getElementById("Correo").value = resultado.CorreoElectronico;
+                    document.getElementById("Telefono").value = resultado.NumeroTelefono;
+                    document.getElementById("Direccion").value = resultado.Direccion;
+
+                    var modal = new bootstrap.Modal(document.getElementById('searchModal'));
+                    modal.show();
+                }
+            };
+
+            xhr.open("GET", "xampp/fe/afiliados.php?cedula=" + cedula, true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
