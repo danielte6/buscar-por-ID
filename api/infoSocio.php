@@ -1,5 +1,5 @@
 <?php
-require_once '../conn/conexion.php'; // Reemplaza 'ruta/a/' con la ubicación real de tu archivo
+require_once '../conn/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
