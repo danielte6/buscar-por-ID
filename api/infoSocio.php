@@ -11,7 +11,7 @@ require_once '../conn/conexion.php';
 
     <!-- Full Screen Search Start -->
     <div class="modal fade" id="searchModal" tabindex="-1">
-        <!-- ... (resto de tu código) ... -->
+      
     </div>
     <!-- Full Screen Search End -->
 
