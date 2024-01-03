@@ -62,332 +62,55 @@
             </div>
         </div>
 
-    <!-- Full Screen Search Start -->
-    <div class="modal fade" id="searchModal" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content bg-light" style="background: rgba(9, 30, 62, .7);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex  justify-content-center bg-light">
-            
+  <!-- Full Screen Search Start -->
+<div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content bg-light" style="background: rgba(9, 30, 62, .7);">
+            <div class="modal-header border-0">
+                <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex justify-content-center bg-light">
 
-                <div class="container-fluid py-5" >
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-6">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase">Número de Registro Nacional de Contador - FNCE</h5>
-                        <h2 class="mb-0">KEVIN ALEXANDER PALMA QUILLUPANGUI.</h2>
-                        <h3 class="mb-0">N° 58965255 REGISTRO OFICIAL</h3>
-                        <h3 class="mb-0">CI: 1724718158</h3>
-                     
-                    </div>
-                    <p class="mb-4">Tempor elore erat amet</p>
-                    <div class="row g-0 mb-3">
-                        <div class="col-sm-12  ">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>AFiliacion 2023</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>AFiliacion 2022</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>AFiliacion 2021</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>AFiliacion 2019</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>AFiliacion 2017</h5>
-                        </div>
-                       
-                    </div>
-                    <div class="d-flex align-items-center mb-4  " >
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-user text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Quieres Conocer mas, Contactanos</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
-                        </div>
-                    </div>
-                    <a href="index.php" class="btn btn-primary py-3 px-5 mt-3  " >Ver repositorio premium</a>
-                </div>
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-5" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 "  src="img/1.png" style="object-fit: cover;">
+                <div class="container-fluid py-5">
+                    <div class="container py-5">
+                        <script>
+                            function buscarSocio() {
+                                // Obtener el valor de la cédula desde el campo de entrada
+                                var cedula = document.getElementById("cedulaInput").value;
+
+                                // Realizar la solicitud AJAX
+                                var xhr = new XMLHttpRequest();
+                                xhr.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        // Manejar la respuesta del servidor
+                                        var resultado = JSON.parse(this.responseText);
+
+                                        // Actualizar los campos en el modal con la información obtenida
+                                        document.getElementById("Nombre").value = resultado.Nombre;
+                                        document.getElementById("Cedula").value = resultado.Cedula;
+                                        document.getElementById("Apellido").value = resultado.Apellido;
+                                        document.getElementById("Correo").value = resultado.CorreoElectronico;
+                                        document.getElementById("Telefono").value = resultado.NumeroTelefono;
+                                        document.getElementById("Direccion").value = resultado.Direccion;
+
+                                        // Mostrar el modal
+                                        var modal = new bootstrap.Modal(document.getElementById('searchModal'));
+                                        modal.show();
+                                    }
+                                };
+                                // Configurar la solicitud AJAX
+                                xhr.open("GET", "xammm/fe/afiliados.php?cedula=" + cedula, true);
+                                xhr.send();
+                            }
+                        </script>
+                        <div id="resultado_busqueda"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="modal fade" id="searchModal2" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content bg-light" style="background: rgba(9, 30, 62, .7);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex  justify-content-center bg-light">
-            
-
-                <div class="container-fluid py-5" >
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-6">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase">Número de Registro Nacional de Auditor - FNCE</h5>
-                        <h2 class="mb-0">JUAN KLEVER PAZMIÑO RIOS.</h2>
-                        <h3 class="mb-0">N° 58965255 REGISTRO OFICIAL</h3>
-                        <h3 class="mb-0">CI: 1724715668</h3>
-                     
-                    </div>
-                    <p class="mb-4">Tempor elore erat amet</p>
-                    <div class="row g-0 mb-3">
-                        <div class="col-sm-12  ">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>AFiliacion 2023</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>AFiliacion 2022</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>AFiliacion 2021</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>AFiliacion 2019</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>AFiliacion 2017</h5>
-                        </div>
-                       
-                    </div>
-                    <div class="d-flex align-items-center mb-4  " >
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-user text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Quieres Conocer mas, Contactanos</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
-                        </div>
-                    </div>
-                    <a href="index.php" class="btn btn-primary py-3 px-5 mt-3  " >Ver repositorio premium</a>
-                </div>
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-5" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 "  src="img/5.png" style="object-fit: cover;">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="modal fade" id="ColegioCarchi" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content bg-white" style="background: rgba(9, 30, 62, .7);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex  justify-content-center bg-white">
-            
-
-                <div class="container-fluid py-5" >
-        <div class="container py-5"> 
-            <div class="row g-5">
-            <div class="col-lg-5" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 "  src="img/1.png" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-6">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase"></h5>
-                        <h2 class="mb-0">Colegio de contadores Carchi</h2>
-                        <h3 class="mb-0">Direccion principal:Rafael Arellano Junin</h3>
-                        <h3 class="mb-0">Fecha de inicio de actividades:13/11/1967</h3>
-                     
-                    </div>
-                    <p class="mb-4">Defensa de los intereses de los sindicatos y de sus afiliados; actividades de asociaciones cuyos afiliados son empleados interesados principalmente en dar a conocer sus opiniones sobre la situación laboral y salarial y en tomar medidas concertadas por conducto de su organización; actividades de sindicatos de empresas, sindicatos con filiales y organizaciones sindicales integradas por sindicatos afiliados y constituidas en función del oficio de sus miembros o en función de criterios geográficos, estructurales o de otra índole.</p>
-                    <div class="row g-0 mb-3">
-                     
-                       
-                    </div>
-                    <div class="d-flex align-items-center mb-4  " >
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-user text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Quieres Conocer mas, Contactanos</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
-                        </div>
-                    </div>
-                    <a href="index.php" class="btn btn-primary py-3 px-5 mt-3  " >Ver repositorio premium</a>
-                </div>
-             
-            </div>
-        </div>
-    </div>
-     </div>
-     </div>
-    </div>
-    </div>
-
-    <div class="modal fade" id="ColegioBolivar" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content bg-white" style="background: rgba(9, 30, 62, .7);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex  justify-content-center bg-white">
-            
-
-                <div class="container-fluid py-5" >
-        <div class="container py-5"> 
-            <div class="row g-5">
-            <div class="col-lg-5" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 "  src="img/2.png" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-6">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase"></h5>
-                        <h2 class="mb-0">Colegio de contadores Carchi</h2>
-                        <h3 class="mb-0">Direccion principal:Rafael Arellano Junin</h3>
-                        <h3 class="mb-0">Fecha de inicio de actividades:13/11/1967</h3>
-                     
-                    </div>
-                    <p class="mb-4">Defensa de los intereses de los sindicatos y de sus afiliados; actividades de asociaciones cuyos afiliados son empleados interesados principalmente en dar a conocer sus opiniones sobre la situación laboral y salarial y en tomar medidas concertadas por conducto de su organización; actividades de sindicatos de empresas, sindicatos con filiales y organizaciones sindicales integradas por sindicatos afiliados y constituidas en función del oficio de sus miembros o en función de criterios geográficos, estructurales o de otra índole.</p>
-                    <div class="row g-0 mb-3">
-                     
-                       
-                    </div>
-                    <div class="d-flex align-items-center mb-4  " >
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-user text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Quieres Conocer mas, Contactanos</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
-                        </div>
-                    </div>
-                    <a href="index.php" class="btn btn-primary py-3 px-5 mt-3  " >Ver repositorio premium</a>
-                </div>
-             
-            </div>
-        </div>
-    </div>
-     </div>
-     </div>
-    </div>
-    </div>
-
-    <div class="modal fade" id="ColegioChimborazo" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content bg-white" style="background: rgba(9, 30, 62, .7);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex  justify-content-center bg-white">
-            
-
-                <div class="container-fluid py-5" >
-        <div class="container py-5"> 
-            <div class="row g-5">
-            <div class="col-lg-5" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 "  src="img/3.png" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-6">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase"></h5>
-                        <h2 class="mb-0">Colegio de contadores Carchi</h2>
-                        <h3 class="mb-0">Direccion principal:Rafael Arellano Junin</h3>
-                        <h3 class="mb-0">Fecha de inicio de actividades:13/11/1967</h3>
-                     
-                    </div>
-                    <p class="mb-4">Defensa de los intereses de los sindicatos y de sus afiliados; actividades de asociaciones cuyos afiliados son empleados interesados principalmente en dar a conocer sus opiniones sobre la situación laboral y salarial y en tomar medidas concertadas por conducto de su organización; actividades de sindicatos de empresas, sindicatos con filiales y organizaciones sindicales integradas por sindicatos afiliados y constituidas en función del oficio de sus miembros o en función de criterios geográficos, estructurales o de otra índole.</p>
-                    <div class="row g-0 mb-3">
-                     
-                       
-                    </div>
-                    <div class="d-flex align-items-center mb-4  " >
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-user text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Quieres Conocer mas, Contactanos</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
-                        </div>
-                    </div>
-                    <a href="index.php" class="btn btn-primary py-3 px-5 mt-3  " >Ver repositorio premium</a>
-                </div>
-             
-            </div>
-        </div>
-    </div>
-     </div>
-     </div>
-    </div>
-    </div>
-
-    <div class="modal fade" id="ColegioCotopaxi" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content bg-white" style="background: rgba(9, 30, 62, .7);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex  justify-content-center bg-white">
-            
-
-                <div class="container-fluid py-5" >
-        <div class="container py-5"> 
-            <div class="row g-5">
-            <div class="col-lg-5" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 "  src="img/4.png" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-6">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase"></h5>
-                        <h2 class="mb-0">Colegio de contadores Carchi</h2>
-                        <h3 class="mb-0">Direccion principal:Rafael Arellano Junin</h3>
-                        <h3 class="mb-0">Fecha de inicio de actividades:13/11/1967</h3>
-                     
-                    </div>
-                    <p class="mb-4">Defensa de los intereses de los sindicatos y de sus afiliados; actividades de asociaciones cuyos afiliados son empleados interesados principalmente en dar a conocer sus opiniones sobre la situación laboral y salarial y en tomar medidas concertadas por conducto de su organización; actividades de sindicatos de empresas, sindicatos con filiales y organizaciones sindicales integradas por sindicatos afiliados y constituidas en función del oficio de sus miembros o en función de criterios geográficos, estructurales o de otra índole.</p>
-                    <div class="row g-0 mb-3">
-                     
-                       
-                    </div>
-                    <div class="d-flex align-items-center mb-4  " >
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-user text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Quieres Conocer mas, Contactanos</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
-                        </div>
-                    </div>
-                    <a href="index.php" class="btn btn-primary py-3 px-5 mt-3  " >Ver repositorio premium</a>
-                </div>
-             
-            </div>
-        </div>
-    </div>
-     </div>
-     </div>
-    </div>
-    </div>
-    <!-- Full Screen Search End -->
+</div>
+<!-- Full Screen Search End -->
 
 
     <!-- About Start -->
