@@ -1,11 +1,10 @@
 <?php
-
 try {
     // Configuración de la conexión
-    $dbHost = '144.91.73.120';
-    $dbName = 'fnc';
-    $dbUser = 'soporte';
-    $dbPass = 'soporte';
+    $dbHost = 'localhost';
+    $dbName = 'datos2023';
+    $dbUser = 'root';
+    $dbPass = '123456';
 
     // Opciones de PDO
     $options = array(
@@ -20,7 +19,4 @@ try {
     // Manejar errores de conexión
     die("Error de conexión: " . $e->getMessage());
 }
-
-// A partir de este punto, $pdo es tu objeto PDO conectado a la base de datos.
-// Puedes realizar consultas y otras operaciones con $pdo.
 ?>
